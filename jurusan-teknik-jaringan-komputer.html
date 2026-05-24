@@ -8,7 +8,7 @@
   <meta name="keywords" content="jurusan teknik jaringan komputer SMK, TJK SMK, prospek kerja jaringan komputer, mata pelajaran TJK SMK, kompetensi keahlian teknik jaringan komputer" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
 
   <script type="application/ld+json">
   {
@@ -41,26 +41,37 @@
 
   <style>
     :root {
-      --primary: #0f3460;
-      --primary-dark: #060d20;
-      --primary-mid: #16213e;
-      --accent: #00d4ff;
-      --accent-warm: #00ffb2;
-      --accent-dim: rgba(0,212,255,0.15);
-      --bg: #f0f4f8;
-      --surface: #ffffff;
-      --text: #1a2535;
-      --text-muted: #4a637a;
-      --border: #d6e4ef;
-      --radius: 14px;
-      --shadow: 0 4px 24px rgba(15,52,96,0.10);
+      /* Blue scale */
+      --blue-dark:   #0b3d91;
+      --blue-mid:    #1565c0;
+      --blue-light:  #1e88e5;
+      --blue-pale:   #e3eeff;
+      --blue-ghost:  #f0f6ff;
+
+      /* Gold scale */
+      --gold:        #ffb300;
+      --gold-light:  #ffd54f;
+      --gold-dim:    rgba(255,179,0,0.18);
+
+      /* Neutral */
+      --bg:          #f5f9ff;
+      --surface:     #ffffff;
+      --text:        #0f1f3d;
+      --text-mid:    #3a5080;
+      --text-muted:  #6b7fa8;
+      --border:      #d4e3f7;
+
+      --radius:      14px;
+      --radius-sm:   8px;
+      --shadow:      0 4px 24px rgba(11,61,145,0.08);
+      --shadow-md:   0 8px 32px rgba(11,61,145,0.13);
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Source Sans 3', sans-serif;
+      font-family: 'DM Sans', sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.7;
@@ -69,20 +80,81 @@
 
     /* ── TOP BAR ── */
     .topbar {
-      background: var(--primary-dark);
+      background: var(--blue-dark);
       color: rgba(255,255,255,0.65);
       font-size: 12px;
       text-align: center;
       padding: 8px 16px;
       letter-spacing: 0.4px;
     }
-    .topbar span { color: var(--accent); font-weight: 600; }
+    .topbar span {
+      color: var(--gold-light);
+      font-weight: 600;
+    }
+
+    /* ── NAVBAR ── */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(11, 61, 145, 0.96);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 0 24px;
+    }
+    .navbar-inner {
+      max-width: 880px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 54px;
+      gap: 16px;
+    }
+    .navbar-brand {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.9);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .navbar-brand .brand-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+    .navbar-links {
+      display: flex;
+      gap: 4px;
+      list-style: none;
+    }
+    .navbar-links a {
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      font-size: 12.5px;
+      font-weight: 500;
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: color 0.2s, background 0.2s;
+      white-space: nowrap;
+    }
+    .navbar-links a:hover {
+      color: #fff;
+      background: rgba(255,255,255,0.1);
+    }
+    @media (max-width: 640px) { .navbar-links { display: none; } }
 
     /* ── HERO ── */
     .hero {
-      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-mid) 50%, var(--primary) 100%);
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-mid) 55%, var(--blue-light) 100%);
       color: #fff;
-      padding: 64px 24px 56px;
+      padding: 72px 24px 60px;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -92,63 +164,67 @@
       position: absolute;
       inset: 0;
       background-image:
-        radial-gradient(circle at 20% 50%, rgba(0,212,255,0.07) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(0,255,178,0.05) 0%, transparent 40%),
-        url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%2300d4ff' stroke-opacity='0.04' stroke-width='1'%3E%3Crect x='10' y='10' width='12' height='8' rx='2'/%3E%3Crect x='58' y='10' width='12' height='8' rx='2'/%3E%3Crect x='34' y='36' width='12' height='8' rx='2'/%3E%3Cline x1='22' y1='14' x2='34' y2='40'/%3E%3Cline x1='58' y1='14' x2='46' y2='40'/%3E%3C/g%3E%3C/svg%3E");
+        radial-gradient(circle at 20% 50%, rgba(255,179,0,0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(30,136,229,0.12) 0%, transparent 40%),
+        url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='0.04' stroke-width='1'%3E%3Crect x='10' y='10' width='12' height='8' rx='2'/%3E%3Crect x='58' y='10' width='12' height='8' rx='2'/%3E%3Crect x='34' y='36' width='12' height='8' rx='2'/%3E%3Cline x1='22' y1='14' x2='34' y2='40'/%3E%3Cline x1='58' y1='14' x2='46' y2='40'/%3E%3C/g%3E%3C/svg%3E");
       pointer-events: none;
     }
     .hero-badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(0,212,255,0.12);
-      border: 1px solid rgba(0,212,255,0.35);
-      color: var(--accent);
-      font-size: 12px;
+      background: rgba(255,179,0,0.15);
+      border: 1px solid rgba(255,213,79,0.4);
+      color: var(--gold-light);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 11.5px;
       font-weight: 700;
-      letter-spacing: 1px;
+      letter-spacing: 1.2px;
       text-transform: uppercase;
-      padding: 6px 16px;
+      padding: 6px 18px;
       border-radius: 100px;
       margin-bottom: 24px;
       position: relative;
     }
     .hero h1 {
-      font-family: 'Sora', sans-serif;
-      font-size: clamp(1.8rem, 5vw, 2.75rem);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(1.85rem, 5vw, 2.9rem);
       font-weight: 800;
-      line-height: 1.2;
-      margin-bottom: 16px;
-      max-width: 780px;
+      line-height: 1.18;
+      margin-bottom: 18px;
+      max-width: 800px;
       margin-left: auto;
       margin-right: auto;
+      letter-spacing: -0.3px;
       position: relative;
     }
     .hero h1 em {
       font-style: normal;
-      color: var(--accent);
+      color: var(--gold);
     }
     .hero p {
-      font-size: clamp(1rem, 2.5vw, 1.1rem);
+      font-size: clamp(0.95rem, 2.5vw, 1.05rem);
       color: rgba(255,255,255,0.72);
-      max-width: 620px;
+      max-width: 600px;
       margin: 0 auto 32px;
       position: relative;
+      font-family: 'DM Sans', sans-serif;
     }
     .hero-meta {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 12px;
-      font-size: 13px;
+      gap: 10px;
+      font-size: 12.5px;
       position: relative;
     }
     .hero-meta span {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(255,255,255,0.09);
+      border: 1px solid rgba(255,255,255,0.18);
       padding: 6px 16px;
       border-radius: 100px;
       color: rgba(255,255,255,0.82);
+      font-weight: 500;
     }
 
     /* ── WRAPPER ── */
@@ -157,48 +233,55 @@
     /* ── INTRO ── */
     .intro-section {
       background: var(--surface);
-      border-left: 4px solid var(--accent);
+      border-left: 4px solid var(--blue-light);
       border-radius: var(--radius);
-      padding: 28px 32px;
+      padding: 26px 30px;
       margin: 40px auto;
       max-width: 880px;
       box-shadow: var(--shadow);
-      font-size: 1.05rem;
+      font-size: 1.02rem;
       color: var(--text);
+      line-height: 1.75;
     }
-    .intro-section strong { color: var(--primary); }
+    .intro-section strong { color: var(--blue-mid); }
 
     /* ── SECTION ── */
-    .section { max-width: 880px; margin: 48px auto; padding: 0 20px; }
+    .section { max-width: 880px; margin: 52px auto; padding: 0 20px; }
     .section-label {
-      font-size: 11px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 10.5px;
       font-weight: 700;
       letter-spacing: 2.5px;
       text-transform: uppercase;
-      color: var(--accent);
+      color: var(--blue-light);
       margin-bottom: 8px;
-      filter: brightness(0.75);
     }
     .section h2 {
-      font-family: 'Sora', sans-serif;
-      font-size: clamp(1.4rem, 3.5vw, 1.9rem);
-      font-weight: 700;
-      color: var(--primary-dark);
-      margin-bottom: 24px;
-      line-height: 1.3;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(1.35rem, 3.5vw, 1.85rem);
+      font-weight: 800;
+      color: var(--blue-dark);
+      margin-bottom: 22px;
+      line-height: 1.25;
+      letter-spacing: -0.2px;
     }
-    .divider { border: none; border-top: 2px solid var(--border); margin: 48px auto; max-width: 880px; }
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 52px auto;
+      max-width: 880px;
+    }
 
     /* ── STATS ── */
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
+      gap: 14px;
       margin-bottom: 32px;
     }
     @media (max-width: 600px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
     .stat-card {
-      background: linear-gradient(135deg, var(--primary-mid), var(--primary));
+      background: linear-gradient(135deg, var(--blue-dark), var(--blue-mid));
       color: #fff;
       border-radius: var(--radius);
       padding: 22px 16px;
@@ -212,47 +295,56 @@
       top: -20px; right: -20px;
       width: 60px; height: 60px;
       border-radius: 50%;
-      background: rgba(0,212,255,0.08);
+      background: rgba(255,179,0,0.10);
     }
     .stat-card .val {
-      font-family: 'Sora', sans-serif;
-      font-size: 1.8rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.85rem;
       font-weight: 800;
-      color: var(--accent);
+      color: var(--gold-light);
       display: block;
+      letter-spacing: -0.5px;
     }
-    .stat-card .lbl { font-size: 12px; color: rgba(255,255,255,0.72); margin-top: 4px; line-height: 1.4; }
+    .stat-card .lbl {
+      font-size: 11.5px;
+      color: rgba(255,255,255,0.70);
+      margin-top: 4px;
+      line-height: 1.4;
+    }
 
     /* ── MAPEL ── */
     .mapel-group { margin-bottom: 28px; }
     .mapel-group h3 {
-      font-size: 15px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 14px;
       font-weight: 700;
-      color: var(--primary);
+      color: var(--blue-mid);
       margin-bottom: 12px;
       padding-bottom: 8px;
-      border-bottom: 2px solid var(--border);
+      border-bottom: 1.5px solid var(--border);
     }
     .mapel-tags { display: flex; flex-wrap: wrap; gap: 8px; }
     .mapel-tags span {
       background: var(--bg);
       border: 1px solid var(--border);
-      color: var(--text);
+      color: var(--text-mid);
       font-size: 13px;
+      font-weight: 500;
       padding: 6px 14px;
       border-radius: 100px;
     }
     .mapel-tags span.highlight {
-      background: var(--primary);
-      color: #fff;
-      border-color: var(--primary);
+      background: var(--blue-pale);
+      color: var(--blue-mid);
+      border-color: #b3cff5;
+      font-weight: 600;
     }
 
     /* ── KOMPETENSI ── */
     .kompetensi-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 20px;
+      gap: 18px;
     }
     .komp-card {
       background: var(--surface);
@@ -269,20 +361,27 @@
       position: absolute;
       top: 0; left: 0;
       width: 4px; height: 100%;
-      background: linear-gradient(180deg, var(--accent), var(--accent-warm));
+      background: linear-gradient(180deg, var(--blue-light), var(--blue-dark));
       opacity: 0;
       transition: opacity 0.2s;
     }
-    .komp-card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(15,52,96,0.15); }
+    .komp-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
     .komp-card:hover::before { opacity: 1; }
-    .komp-icon { font-size: 28px; margin-bottom: 12px; display: block; }
-    .komp-card h4 { font-size: 15px; font-weight: 700; color: var(--primary-dark); margin-bottom: 8px; line-height: 1.3; }
-    .komp-card p { font-size: 13.5px; color: var(--text-muted); line-height: 1.6; }
+    .komp-icon { font-size: 26px; margin-bottom: 12px; display: block; }
+    .komp-card h4 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--blue-dark);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+    .komp-card p { font-size: 13px; color: var(--text-muted); line-height: 1.65; }
 
     /* ── KARIR ── */
     .karir-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(158px, 1fr));
       gap: 12px;
     }
     .karir-card {
@@ -292,64 +391,107 @@
       padding: 16px 14px;
       text-align: center;
       font-size: 13px;
-      color: var(--text);
+      color: var(--text-mid);
       font-weight: 500;
       box-shadow: var(--shadow);
-      transition: border-color 0.2s, color 0.2s;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
     }
-    .karir-card:hover { border-color: var(--accent); color: var(--primary); }
+    .karir-card:hover {
+      border-color: var(--blue-light);
+      color: var(--blue-mid);
+      background: var(--blue-ghost);
+    }
     .karir-card .k-icon { font-size: 22px; display: block; margin-bottom: 6px; }
     .karir-note {
       margin-top: 20px;
-      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      background: linear-gradient(135deg, var(--blue-dark), var(--blue-mid));
       color: rgba(255,255,255,0.85);
       border-radius: var(--radius);
       padding: 20px 24px;
       font-size: 14px;
-      line-height: 1.7;
-      border-left: 4px solid var(--accent);
+      line-height: 1.75;
+      border-left: 4px solid var(--gold);
     }
 
     /* ── TABLE ── */
-    .table-wrap { overflow-x: auto; border-radius: var(--radius); box-shadow: var(--shadow); }
+    .table-wrap {
+      overflow-x: auto;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
     table { width: 100%; border-collapse: collapse; font-size: 14px; }
-    thead { background: linear-gradient(90deg, var(--primary-mid), var(--primary)); color: #fff; }
-    thead th { padding: 14px 16px; text-align: left; font-weight: 600; }
+    thead {
+      background: linear-gradient(90deg, var(--blue-dark), var(--blue-mid));
+      color: #fff;
+    }
+    thead th {
+      padding: 14px 16px;
+      text-align: left;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.2px;
+    }
     tbody tr { border-bottom: 1px solid var(--border); background: var(--surface); }
-    tbody tr:hover { background: #e8f4fd; }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: var(--blue-ghost); }
     tbody td { padding: 13px 16px; color: var(--text); vertical-align: top; }
+    tbody td strong { color: var(--blue-mid); }
 
     /* ── TIPS ── */
-    .tips-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
+    .tips-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 18px;
+    }
     .tip-card {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
       padding: 24px 20px;
       box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+    .tip-card::after {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 80px; height: 80px;
+      background: radial-gradient(circle at top right, var(--blue-pale), transparent 70%);
+      pointer-events: none;
     }
     .tip-num {
-      font-family: 'Sora', sans-serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: 2rem;
       font-weight: 800;
-      color: var(--accent);
-      filter: brightness(0.7);
+      color: var(--blue-light);
       line-height: 1;
       margin-bottom: 12px;
       display: block;
+      opacity: 0.5;
     }
-    .tip-card h4 { font-size: 15px; color: var(--primary-dark); margin-bottom: 8px; font-weight: 700; }
-    .tip-card p { font-size: 13.5px; color: var(--text-muted); line-height: 1.6; }
+    .tip-card h4 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 14.5px;
+      color: var(--blue-dark);
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+    .tip-card p { font-size: 13px; color: var(--text-muted); line-height: 1.65; }
 
     /* ── FAQ ── */
-    .faq-list { display: flex; flex-direction: column; gap: 12px; }
+    .faq-list { display: flex; flex-direction: column; gap: 10px; }
     .faq-item {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
       overflow: hidden;
       box-shadow: var(--shadow);
+      transition: border-color 0.2s;
     }
+    .faq-item.open { border-color: var(--blue-light); }
     .faq-q {
       width: 100%;
       text-align: left;
@@ -357,42 +499,47 @@
       background: none;
       border: none;
       cursor: pointer;
-      font-size: 15px;
+      font-size: 14.5px;
       font-weight: 600;
-      color: var(--primary-dark);
+      color: var(--blue-dark);
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 12px;
-      font-family: inherit;
+      font-family: 'Plus Jakarta Sans', sans-serif;
     }
     .faq-q .arrow {
-      width: 24px; height: 24px;
+      width: 26px; height: 26px;
       border-radius: 50%;
-      background: var(--bg);
+      background: var(--blue-pale);
+      color: var(--blue-mid);
       display: flex; align-items: center; justify-content: center;
       flex-shrink: 0;
-      font-size: 14px;
-      transition: transform 0.3s;
+      font-size: 13px;
+      transition: transform 0.3s, background 0.2s;
     }
-    .faq-item.open .faq-q .arrow { transform: rotate(180deg); }
+    .faq-item.open .faq-q .arrow {
+      transform: rotate(180deg);
+      background: var(--blue-light);
+      color: #fff;
+    }
     .faq-a {
       max-height: 0;
       overflow: hidden;
       transition: max-height 0.35s ease, padding 0.3s;
       padding: 0 20px;
       color: var(--text-muted);
-      font-size: 14.5px;
-      line-height: 1.75;
+      font-size: 14px;
+      line-height: 1.8;
     }
-    .faq-item.open .faq-a { max-height: 320px; padding: 0 20px 18px; }
+    .faq-item.open .faq-a { max-height: 360px; padding: 0 20px 20px; }
 
     /* ── CTA ── */
     .cta-section {
-      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-mid) 50%, var(--primary) 100%);
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-mid) 50%, var(--blue-light) 100%);
       color: #fff;
       text-align: center;
-      padding: 60px 24px;
+      padding: 64px 24px;
       margin-top: 64px;
       position: relative;
       overflow: hidden;
@@ -401,14 +548,15 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at center bottom, rgba(0,212,255,0.12) 0%, transparent 70%);
+      background: radial-gradient(ellipse at center bottom, rgba(255,179,0,0.12) 0%, transparent 65%);
       pointer-events: none;
     }
     .cta-section h2 {
-      font-family: 'Sora', sans-serif;
-      font-size: clamp(1.5rem, 4vw, 2.1rem);
-      font-weight: 700;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(1.55rem, 4.5vw, 2.2rem);
+      font-weight: 800;
       margin-bottom: 12px;
+      letter-spacing: -0.3px;
       position: relative;
     }
     .cta-section p {
@@ -420,24 +568,43 @@
       margin-right: auto;
       position: relative;
     }
-    .cta-buttons { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; position: relative; }
+    .cta-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      position: relative;
+    }
     .btn {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 14px 28px;
+      padding: 13px 28px;
       border-radius: 100px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: 14px;
       font-weight: 700;
       text-decoration: none;
       cursor: pointer;
       border: none;
-      font-family: inherit;
       transition: transform 0.2s, box-shadow 0.2s;
     }
-    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.25); }
-    .btn-primary { background: var(--accent); color: var(--primary-dark); }
-    .btn-outline { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.4); }
+    .btn:hover { transform: translateY(-2px); }
+
+    /* Gold button */
+    .btn-gold {
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: var(--blue-dark);
+      box-shadow: 0 4px 18px rgba(255,179,0,0.35);
+    }
+    .btn-gold:hover { box-shadow: 0 8px 28px rgba(255,179,0,0.5); }
+
+    .btn-outline {
+      background: transparent;
+      color: #fff;
+      border: 2px solid rgba(255,255,255,0.38);
+    }
+    .btn-outline:hover { background: rgba(255,255,255,0.08); }
 
     /* ── JURUSAN LAIN ── */
     .jurusan-links {
@@ -449,23 +616,32 @@
     .jurusan-links p { font-size: 13px; color: var(--text-muted); margin-bottom: 14px; }
     .jurusan-links a {
       display: inline-block;
-      margin: 4px 6px;
-      font-size: 13px;
-      color: var(--primary);
+      margin: 4px 5px;
+      font-size: 12.5px;
+      font-weight: 500;
+      color: var(--text-mid);
       background: var(--bg);
       border: 1px solid var(--border);
       padding: 6px 16px;
       border-radius: 100px;
       text-decoration: none;
-      transition: background 0.2s, color 0.2s;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
     }
-    .jurusan-links a:hover,
-    .jurusan-links a.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+    .jurusan-links a:hover {
+      background: var(--blue-pale);
+      color: var(--blue-mid);
+      border-color: #b3cff5;
+    }
+    .jurusan-links a.active {
+      background: var(--blue-mid);
+      color: #fff;
+      border-color: var(--blue-mid);
+    }
 
     /* ── FOOTER ── */
     footer {
-      background: var(--primary-dark);
-      color: rgba(255,255,255,0.45);
+      background: var(--blue-dark);
+      color: rgba(255,255,255,0.42);
       text-align: center;
       font-size: 12px;
       padding: 20px;
@@ -473,13 +649,21 @@
 
     /* ── ANIMATIONS ── */
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
+      from { opacity: 0; transform: translateY(22px); }
       to   { opacity: 1; transform: translateY(0); }
     }
     .hero > * { animation: fadeUp 0.6s ease both; }
-    .hero > *:nth-child(2) { animation-delay: 0.1s; }
-    .hero > *:nth-child(3) { animation-delay: 0.2s; }
-    .hero > *:nth-child(4) { animation-delay: 0.3s; }
+    .hero > *:nth-child(1) { animation-delay: 0.05s; }
+    .hero > *:nth-child(2) { animation-delay: 0.15s; }
+    .hero > *:nth-child(3) { animation-delay: 0.25s; }
+    .hero > *:nth-child(4) { animation-delay: 0.35s; }
+
+    /* Utilities */
+    .sub-text {
+      color: var(--text-muted);
+      margin-bottom: 22px;
+      font-size: 15px;
+    }
   </style>
 </head>
 <body>
@@ -489,10 +673,27 @@
     🏫 SMK Ciledug Al-Musaddadiyah Garut &nbsp;|&nbsp; Kompetensi Keahlian: <span>Teknik Jaringan Komputer (TJK)</span>
   </div>
 
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <a href="#" class="navbar-brand">
+        <span class="brand-dot"></span>
+        TJK — Teknik Jaringan Komputer
+      </a>
+      <ul class="navbar-links">
+        <li><a href="#kurikulum">Kurikulum</a></li>
+        <li><a href="#kompetensi">Kompetensi</a></li>
+        <li><a href="#karir">Karir</a></li>
+        <li><a href="#sertifikasi">Sertifikasi</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </div>
+  </nav>
+
   <!-- HERO -->
   <header class="hero">
     <div class="hero-badge">🌐 Kompetensi Keahlian | Teknik Jaringan Komputer SMK</div>
-    <h1>Jurusan <em>Teknik Jaringan Komputer</em> SMK: Prospek Karir, Mata Pelajaran, dan Peluang Masa Depan</h1>
+    <h1>Jurusan <em>Teknik Jaringan Komputer</em> SMK:<br>Prospek Karir, Mata Pelajaran & Peluang Masa Depan</h1>
     <p>Panduan lengkap untuk calon siswa baru yang ingin berkarir di dunia teknologi — jaringan komputer, keamanan siber, cloud computing, dan infrastruktur digital modern.</p>
     <div class="hero-meta">
       <span>🎓 Jenjang SMK / Sederajat</span>
@@ -512,10 +713,10 @@
   <div class="section">
     <div class="section-label">Tentang Jurusan</div>
     <h2>Apa Itu Jurusan Teknik Jaringan Komputer di SMK?</h2>
-    <p style="color:var(--text-muted);margin-bottom:24px;font-size:15px;">
+    <p class="sub-text">
       Jurusan <strong>Teknik Jaringan Komputer (TJK)</strong> adalah program keahlian yang membekali siswa dengan kemampuan merencanakan, membangun, mengoperasikan, dan memelihara infrastruktur jaringan komputer. Mulai dari instalasi kabel terstruktur, konfigurasi perangkat aktif jaringan, administrasi server, hingga keamanan siber dan cloud networking.
     </p>
-    <p style="color:var(--text-muted);margin-bottom:32px;font-size:15px;">
+    <p class="sub-text">
       TJK bukan sekadar belajar merakit komputer — ini adalah perpaduan antara logika teknis, kemampuan analitis, dan pemahaman mendalam terhadap ekosistem digital. Lulusan TJK mampu bekerja di perusahaan telekomunikasi, data center, instansi pemerintah, perbankan, startup teknologi, hingga membangun usaha IT mandiri.
     </p>
 
@@ -542,10 +743,10 @@
   <hr class="divider" />
 
   <!-- MATA PELAJARAN -->
-  <div class="section">
+  <div class="section" id="kurikulum">
     <div class="section-label">Kurikulum</div>
     <h2>Mata Pelajaran yang Dipelajari</h2>
-    <p style="color:var(--text-muted);margin-bottom:24px;font-size:15px;">Selama tiga tahun, kamu akan mempelajari dunia jaringan komputer dari dasar perangkat keras hingga administrasi jaringan tingkat profesional.</p>
+    <p class="sub-text">Selama tiga tahun, kamu akan mempelajari dunia jaringan komputer dari dasar perangkat keras hingga administrasi jaringan tingkat profesional.</p>
 
     <div class="mapel-group">
       <h3>Mata Pelajaran Umum & Adaptif</h3>
@@ -581,10 +782,10 @@
   <hr class="divider" />
 
   <!-- KOMPETENSI -->
-  <div class="section">
+  <div class="section" id="kompetensi">
     <div class="section-label">Keahlian Lulusan</div>
     <h2>Kompetensi yang Dikuasai Lulusan</h2>
-    <p style="color:var(--text-muted);margin-bottom:24px;font-size:15px;">Berikut keahlian praktis yang wajib dikuasai lulusan TJK sesuai kebutuhan industri teknologi informasi dan infrastruktur digital.</p>
+    <p class="sub-text">Berikut keahlian praktis yang wajib dikuasai lulusan TJK sesuai kebutuhan industri teknologi informasi dan infrastruktur digital.</p>
 
     <div class="kompetensi-grid">
       <div class="komp-card">
@@ -623,10 +824,10 @@
   <hr class="divider" />
 
   <!-- KARIR -->
-  <div class="section">
+  <div class="section" id="karir">
     <div class="section-label">Prospek Kerja</div>
     <h2>Prospek Karir Lulusan Teknik Jaringan Komputer SMK</h2>
-    <p style="color:var(--text-muted);margin-bottom:24px;font-size:15px;">Industri teknologi Indonesia terus tumbuh pesat — kebutuhan tenaga ahli jaringan dan infrastruktur IT ada di hampir setiap sektor bisnis modern.</p>
+    <p class="sub-text">Industri teknologi Indonesia terus tumbuh pesat — kebutuhan tenaga ahli jaringan dan infrastruktur IT ada di hampir setiap sektor bisnis modern.</p>
 
     <div class="karir-grid">
       <div class="karir-card"><span class="k-icon">🌐</span>Network Administrator</div>
@@ -649,10 +850,10 @@
   <hr class="divider" />
 
   <!-- SERTIFIKASI -->
-  <div class="section">
+  <div class="section" id="sertifikasi">
     <div class="section-label">Sertifikasi Profesi</div>
     <h2>Sertifikasi Profesi yang Dapat Diraih</h2>
-    <p style="color:var(--text-muted);margin-bottom:24px;font-size:15px;">Sertifikasi ini meningkatkan nilai jual lulusan secara signifikan di hadapan perusahaan teknologi, ISP, dan lembaga pemerintah.</p>
+    <p class="sub-text">Sertifikasi ini meningkatkan nilai jual lulusan secara signifikan di hadapan perusahaan teknologi, ISP, dan lembaga pemerintah.</p>
 
     <div class="table-wrap">
       <table>
@@ -666,28 +867,28 @@
         <tbody>
           <tr>
             <td><strong>Uji Kompetensi Keahlian (UKK)</strong></td>
-            <td>BNSP / Kemendikbud</td>
-            <td>Sertifikat kompetensi nasional wajib SMK</td>
+            <td style="color:var(--text-mid)">BNSP / Kemendikbud</td>
+            <td style="color:var(--text-muted)">Sertifikat kompetensi nasional wajib SMK</td>
           </tr>
           <tr>
             <td><strong>Cisco Certified Network Associate (CCNA)</strong></td>
-            <td>Cisco</td>
-            <td>Jaringan dasar, routing, switching, dan troubleshooting Cisco</td>
+            <td style="color:var(--text-mid)">Cisco</td>
+            <td style="color:var(--text-muted)">Jaringan dasar, routing, switching, dan troubleshooting Cisco</td>
           </tr>
           <tr>
             <td><strong>MikroTik Certified Network Associate (MTCNA)</strong></td>
-            <td>MikroTik</td>
-            <td>Konfigurasi dan administrasi perangkat MikroTik RouterOS</td>
+            <td style="color:var(--text-mid)">MikroTik</td>
+            <td style="color:var(--text-muted)">Konfigurasi dan administrasi perangkat MikroTik RouterOS</td>
           </tr>
           <tr>
             <td><strong>Sertifikasi BNSP Teknisi Jaringan</strong></td>
-            <td>BNSP / LSP</td>
-            <td>SKKNI bidang teknik jaringan komputer dan telekomunikasi</td>
+            <td style="color:var(--text-mid)">BNSP / LSP</td>
+            <td style="color:var(--text-muted)">SKKNI bidang teknik jaringan komputer dan telekomunikasi</td>
           </tr>
           <tr>
             <td><strong>CompTIA Network+</strong></td>
-            <td>CompTIA</td>
-            <td>Fondasi jaringan komputer yang diakui secara internasional</td>
+            <td style="color:var(--text-mid)">CompTIA</td>
+            <td style="color:var(--text-muted)">Fondasi jaringan komputer yang diakui secara internasional</td>
           </tr>
         </tbody>
       </table>
@@ -700,7 +901,7 @@
   <div class="section">
     <div class="section-label">Tips Sukses</div>
     <h2>Tips Sukses di Jurusan Teknik Jaringan Komputer</h2>
-    <p style="color:var(--text-muted);margin-bottom:24px;font-size:15px;">Empat kunci yang membedakan teknisi biasa dengan network engineer yang langsung diminati perusahaan teknologi dan industri.</p>
+    <p class="sub-text">Empat kunci yang membedakan teknisi biasa dengan network engineer yang langsung diminati perusahaan teknologi dan industri.</p>
 
     <div class="tips-grid">
       <div class="tip-card">
@@ -729,10 +930,10 @@
   <hr class="divider" />
 
   <!-- FAQ -->
-  <div class="section">
+  <div class="section" id="faq">
     <div class="section-label">FAQ</div>
     <h2>Pertanyaan yang Sering Ditanyakan</h2>
-    <p style="color:var(--text-muted);margin-bottom:24px;font-size:15px;">Jawaban jujur untuk keraguan yang paling umum dari calon siswa dan orang tua.</p>
+    <p class="sub-text">Jawaban jujur untuk keraguan yang paling umum dari calon siswa dan orang tua.</p>
 
     <div class="faq-list">
       <div class="faq-item">
@@ -778,7 +979,7 @@
     <h2>Siap Berkarir di Dunia Teknologi & Infrastruktur Digital?</h2>
     <p>Hubungi sekolah untuk informasi pendaftaran, jadwal kunjungan, dan konsultasi pemilihan jurusan gratis.</p>
     <div class="cta-buttons">
-      <a href="#" class="btn btn-primary">📝 Daftar Sekarang</a>
+      <a href="#" class="btn btn-gold">📝 Daftar Sekarang</a>
       <a href="#" class="btn btn-outline">📞 Hubungi Kami</a>
     </div>
   </section>
@@ -790,8 +991,9 @@
     <a href="#">Bisnis Digital</a>
     <a href="#" class="active">Teknik Jaringan Komputer</a>
     <a href="#">Manajemen Perkantoran</a>
-    <a href="#">Pemasaran</a>
+    <a href="#">Teknik Kendaraan Ringan</a>
     <a href="#">Desain Komunikasi Visual</a>
+    <a href="#">Teknik Sepeda Motor</a>
     <a href="#">Jurusan Lainnya</a>
   </div>
 
